@@ -7,6 +7,26 @@
   <dd><%= @dish.name %></dd>
 
   <dt>Cuisine ID</dt>
-  <dd><%= Cuisine.find_by({:id => @dish.cuisine_id}).name %></dd>
+  <dd><%= @cuisine.name %></dd>
+
+  <dt>Favorites! </dt>
+
+  <% if (@favorites.count == 0) %>
+  <dd><%= @vacio%></dd>
+  <% end %>
+
+
+  <dd>
+  <% @favorites.each do |favorite| %>
+  <li>Venue: <%=Venue.find_by(:id => favorite.venue_id).name%></li>
+  <li>User: <%=User.find_by(:id => favorite.user_id).username%></li>
+  <p> </p>
+
+  <% end %>
+  </dd>
+
+
+
+
 
 </dl>

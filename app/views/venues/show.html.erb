@@ -7,10 +7,23 @@
   <dd><%= @venue.name %></dd>
 
   <dt>Neighborhood</dt>
-  <dd><%= Neighborhood.find_by({:id => @venue.id}).name %></dd>
+  <dd><%= @neighborhood.name %></dd>
 
   <dt>Address</dt>
-  <dd><%= @venue.address %></dd>
+  <dd><%= @venue.address %>
+
+  <dt>Favorites</dt>
+
+  <% if (@favorites.count == 0) %>
+  <dd><%= @vacio%></dd>
+  <% end %>
+
+  <dd><% @favorites.each do |favorite| %>
+  <li>Dish: <%=Dish.find_by(:id => favorite.dish_id).name%></li>
+  <li>User: <%=User.find_by(:id => favorite.user_id).username%></li>
+  <p> </p>
+
+  <% end %></dd>
 
   <dt>Latitude</dt>
   <dd><%= @latitude %></dd>

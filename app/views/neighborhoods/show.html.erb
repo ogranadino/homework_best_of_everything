@@ -9,4 +9,11 @@
   <dt>City</dt>
   <dd><%= @neighborhood.city %></dd>
 
+  <dt>Venues</dt>
+  <dd>
+
+  <% @venues.each do |venue| %>
+  <li> <%=venue.name  %> </li>
+  <% end %>
+  </dd>
 </dl>

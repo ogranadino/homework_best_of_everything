@@ -3,7 +3,25 @@
 </div>
 
 <dl class="dl-horizontal">
-  <dt>Username</dt>
-  <dd><%= @user.username %></dd>
 
-</dl>
+  <div>
+    <p><h3>Username: <%= @user.username %></h3></p>
+
+    <div>
+
+      <% i = 1 %>
+      <% @favorites.each do |favorite| %>
+      <% dish = Dish.find_by({:id => favorite.dish_id})%>
+      <h4> Favorite #<%=i%></h4>
+      <p>Dish: <%=dish.name %></p>
+      <p>Cuisine: <%=Cuisine.find_by({:id => dish.cuisine_id}).name %></p>
+      <p>Venue: <%=Venue.find_by({:id => favorite.venue_id}).name %></p>
+      <%i= i+1%>
+      <p> </p>
+      <% end %>
+
+    </div>
+  </div>
+
+
+
